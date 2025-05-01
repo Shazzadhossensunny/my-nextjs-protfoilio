@@ -8,7 +8,7 @@ This is a **personal portfolio and blog website** built with Next.js, TypeScript
 
 ## ✨ Features
 
-### Public Pages:
+###  Pages:
 
 - **Home Page:** Introduction, skills, and technologies used.
 - **Projects Page:** Showcases projects with details.
