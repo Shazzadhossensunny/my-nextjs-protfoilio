@@ -14,12 +14,14 @@ const FeaturedProjects: React.FC<ProjectsProps> = ({ projects, isLoading }) => {
   const handleProjectClick = (projectId: string) => {
     router.push(`/projects/${projectId}`);
   };
+
   const handleButtonClick = (e: React.MouseEvent, link?: string) => {
     e.stopPropagation();
     if (link) {
       window.open(link, "_blank");
     }
   };
+
   if (isLoading) {
     return (
       <div className="min-h-[400px] flex items-center justify-center">
@@ -27,6 +29,18 @@ const FeaturedProjects: React.FC<ProjectsProps> = ({ projects, isLoading }) => {
       </div>
     );
   }
+
+  // Sort projects by createdAt date in descending order (newest first)
+  // Then take the first 3 projects
+  const sortedProjects = projects?.data
+    ?.slice()
+    .sort((a, b) => {
+      // Convert dates to timestamps for comparison
+      const dateA = new Date(a.createdAt).getTime();
+      const dateB = new Date(b.createdAt).getTime();
+      return dateB - dateA; // Descending order (newest first)
+    })
+    .slice(0, 3);
 
   return (
     <section className="py-20 bg-white dark:bg-gray-900">
@@ -41,13 +55,13 @@ const FeaturedProjects: React.FC<ProjectsProps> = ({ projects, isLoading }) => {
             Featured Projects
           </h2>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Showcase of my recent work and projects that demonstrate my skills
+            Showcase of my latest work and projects that demonstrate my skills
             and expertise
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {projects?.data?.slice(0, 3).map((project, index) => (
+          {sortedProjects?.map((project, index) => (
             <motion.div
               key={project._id}
               initial={{ opacity: 0, y: 20 }}
@@ -104,6 +118,11 @@ const FeaturedProjects: React.FC<ProjectsProps> = ({ projects, isLoading }) => {
                       +{project.technologies.length - 3} more
                     </span>
                   )}
+                </div>
+
+                {/* Optional: Display creation date for reference */}
+                <div className="mt-4 text-xs text-gray-500 dark:text-gray-400">
+                  {new Date(project.createdAt).toLocaleDateString()}
                 </div>
               </div>
             </motion.div>

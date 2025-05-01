@@ -1,3 +1,4 @@
+import EducationExperienceSection from "@/components/EducationsAndExperience";
 import FeaturedBlogs from "@/components/FeaturedBlogs";
 import FeaturedProjects from "@/components/FeaturedProjects";
 import HeroSection from "@/components/HeroSection";
@@ -15,6 +16,7 @@ const HomePage = async () => {
       <HeroSection />
       <FeaturedProjects projects={projects} isLoading={false} />
       <SkillsSection />
+      <EducationExperienceSection />
       <FeaturedBlogs blogs={blogs} isLoading={false} />
     </div>
   );
