@@ -1,6 +1,6 @@
 # Next.js Portfolio & Blog Website
 
-🚀 **Live Site:** [My Portfolio](https://my-nextjs-portfolio-murex.vercel.app/)
+🚀 **Live Site:** [My Portfolio](https://my-nextjs-portfolio2.vercel.app/)
 
 ## 📌 Project Overview
 
@@ -15,28 +15,10 @@ This is a **personal portfolio and blog website** built with Next.js, TypeScript
 - **Blog Page:** Displays blog posts with content.
 - **Contact Page:** Contact form to receive messages.
 
-### Dashboard Features (Authenticated Users Only):
-
-- **Project Management:**
-  - Create a new project
-  - View all projects
-  - Update project details
-  - Delete projects
-- **Blog Management:**
-  - Create a new blog post
-  - View all blogs
-  - Update blog details (except slug)
-  - Delete blog posts
-- **Message Management:**
-  - View all messages
-  - Mark messages as read/unread
-  - Delete messages
-
 ## 🏗 Tech Stack
 
 - **Frontend:** Next.js, TypeScript, Tailwind CSS, Framer Motion
 - **State Management:** Redux Toolkit (RTK Query)
-- **Authentication:** NextAuth (Google, GitHub OAuth)
 - **Backend:** Node.js, Express.js, MongoDB
 - **Deployment:** Vercel
 
@@ -45,8 +27,8 @@ This is a **personal portfolio and blog website** built with Next.js, TypeScript
 ## 🛠 Setup & Installation
 ### 1️⃣ Clone the Repository
 ```bash
-git clone  https://github.com/Shazzadhossensunny/my-nextjs-portfolio
-cd my-nextjs-portfolio
+git clone  https://github.com/Shazzadhossensunny/my-nextjs-protfoilio
+cd my-nextjs-protfoilio
 ````
 
 ### 2️⃣ Install Dependencies
@@ -61,11 +43,6 @@ Create a `.env.local` file and add:
 
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:5000/api
-NEXTAUTH_URL=http://localhost:3000
-GOOGLE_CLIENT_ID=your_google_client_id
-GOOGLE_CLIENT_SECRET=your_google_client_secret
-GITHUB_CLIENT_ID=your_github_client_id
-GITHUB_CLIENT_SECRET=your_github_client_secret
 ```
 
 ### 4️⃣ Start Development Server
@@ -86,4 +63,4 @@ vercel deploy         # Deploy to Vercel
 
 ---
 
-🔹 **Developed by [Shazzad Hossen](https://my-nextjs-portfolio-murex.vercel.app/)**
+🔹 **Developed by [Shazzad Hossen](https://my-nextjs-portfolio2.vercel.app/)**
