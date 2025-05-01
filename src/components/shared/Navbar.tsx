@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Menu, X, Moon, Sun, LogIn, LayoutDashboard } from "lucide-react";
+import { Menu, X, Moon, Sun, LayoutDashboard } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import LogoImg from "../../assets/images/logo_sunny.png";
 
 const Navbar = () => {
@@ -14,6 +14,7 @@ const Navbar = () => {
   const { theme, setTheme } = useTheme();
   const { status } = useSession();
   const pathname = usePathname();
+  const router = useRouter();
 
   const menuItems = [
     { title: "Home", href: "/" },
@@ -27,12 +28,14 @@ const Navbar = () => {
     closed: { opacity: 0, x: "100%" },
   };
 
-  const isActive = (path: any) => {
+  const isActive = (path: string) => {
     if (path === "/" && pathname === "/") return true;
     if (path !== "/" && pathname.startsWith(path)) return true;
     return false;
   };
 
+  // Modified AuthButton component that only shows Dashboard for authenticated users
+  // and doesn't show anything for unauthenticated users
   const AuthButton = () => {
     if (status === "authenticated") {
       return (
@@ -45,16 +48,12 @@ const Navbar = () => {
         </Link>
       );
     }
-    return (
-      <Link
-        href="/login"
-        className="flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-600 text-white hover:bg-purple-700 transition-colors"
-      >
-        <LogIn size={18} />
-        <span>Login</span>
-      </Link>
-    );
+    // Return null instead of the login button
+    return null;
   };
+
+  // We're now handling login page redirection at the middleware level
+  // No need for client-side redirection in the Navbar component
 
   return (
     <nav className="fixed w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md">
@@ -168,7 +167,7 @@ const Navbar = () => {
             </div>
           ))}
 
-          {/* Mobile Auth Button */}
+          {/* Mobile Auth Button - only show if authenticated */}
           <div className="px-3 py-2">
             <AuthButton />
           </div>

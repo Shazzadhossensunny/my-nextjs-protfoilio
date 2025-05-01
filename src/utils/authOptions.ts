@@ -1,6 +1,7 @@
 import { NextAuthOptions } from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
+
 export const authOptions: NextAuthOptions = {
   providers: [
     GitHubProvider({
@@ -13,7 +14,16 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   pages: {
-    signIn: "/",
+    signIn: "/", // Redirect sign-in to home page
+    signOut: "/", // Redirect sign-out to home page
+    error: "/", // Redirect errors to home page
+    verifyRequest: "/", // Redirect verify requests to home page
+  },
+  callbacks: {
+    async redirect({ url, baseUrl }) {
+      // Force redirects back to the base URL instead of to /login
+      return baseUrl;
+    },
   },
   secret: process.env.NEXTAUTH_SECRET,
 };
