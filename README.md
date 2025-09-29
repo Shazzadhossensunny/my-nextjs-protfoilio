@@ -1,6 +1,6 @@
 # Next.js Portfolio & Blog Website
 
-🚀 **Live Site:** [My Portfolio](https://my-nextjs-portfolio2.vercel.app/)
+🚀 **Live Site:** [My Portfolio]((https://shazzadhossensunny.vercel.app/))
 
 ## 📌 Project Overview
 
